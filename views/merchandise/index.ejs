@@ -1,0 +1,54 @@
+<%- include('../layout/header.ejs'); %>
+<h1 class="text-center"><a href="/merchandise">Merchandises</a></h1>
+<table class="table">
+  <thead>
+    <tr class="text-center">
+      <form action="/search" method="post">
+        <div class="inline-group">
+          <input type="hidden" name="tag" value="merchandises">
+          <th><input class="form-control" name="search" value="" placeholder="Search" required></th>
+
+        </div>
+      </form>
+    </tr>
+  </thead>
+</table>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="text-center">Category</th>
+      <th class="text-center">Title</th>
+      <th class="text-center">Producer</th>
+      <th class="text-center">Price</th>
+      <th class="text-center"> <button type="button" style="width: 100%" class="btn btn-success" data-toggle="modal"
+          data-target="#exampleModal">
+          Add New
+        </button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% merchandises.forEach(function(merchandise){ %>
+    <tr>
+      <td class="text-center">
+        <%= merchandise.Category %>
+      </td>
+      <td class="text-center">
+        <%= merchandise.Title %>
+      </td>
+      <td class="text-center">
+        <%= merchandise.Producer %>
+      </td>
+      <td class="text-center">
+        <%= merchandise.Price %>
+      </td>
+      <td class="text-center">
+        <a href="/merchandise/delete/<%=merchandise._id %>" class="material-icons">delete_forever</a>
+        <a href="/merchandise/edit/<%=merchandise._id %>" class="material-icons">edit</a>
+      </td>
+    </tr>
+    <% }) %>
+
+  </tbody>
+</table>
+<%- include('../merchandise/create'); %>
+<%- include('../layout/footer.ejs'); %>

@@ -1,0 +1,65 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+        </div>
+        <div class="modal-body">
+            <form action="/order/create" method="post">
+              <div class="form-group">
+                  <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="market">
+                      <% markets.forEach(function(market){ %>
+                      <option class="form-control mb-2 mr-sm-2" name="market" value="<%= market.Name %>">
+                        <%= market.Name %>
+                      </option>
+                      <% }) %>
+                    </optgroup>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="seller">
+                      <% sellers.forEach(function(seller){ %>
+                      <option class="form-control mb-2 mr-sm-2" name="seller" value="<%= seller.LastName %>">
+                        <%= seller.LastName %>
+                      </option>
+                      <% }) %>
+                    </optgroup>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="client">
+                      <% clients.forEach(function(client){ %>
+                      <option class="form-control mb-2 mr-sm-2" name="client" value="<%= client.LastName %>">
+                        <%= client.LastName %>
+                      </option>
+                      <% }) %>
+                    </optgroup>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="merchandise">
+                      <% merchandises.forEach(function(merchandise){ %>
+                      <option class="form-control mb-2 mr-sm-2" name="merchandise" value="<%= merchandise.Title %>">
+                        <%= merchandise.Title %>
+                      </option>
+                      <% }) %>
+                    </optgroup>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input type="number" min="1" max="10" class="form-control mb-2 mr-sm-2" placeholder="Count"
+                   name="count" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" min="1" max="1000000" class="form-control mb-2 mr-sm-2" placeholder="Price"
+                     name="price" autocomplete="off" required>
+                  </div>
+              <div class="modal-footer center">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+<%- include('../layout/header.ejs'); %>
+  <h1 class="text-center"><a href="/seller">Sellers</a></h1>
+  <table class="table">
+      <thead>
+          <tr class="text-center">
+              <form action="/search" method="post">
+                  <div class="inline-group">
+                          <input type="hidden" name="tag" value="sellers">
+                      <th><input class="form-control" name="search" value="" placeholder="Search" required></th>
+  
+                  </div>
+              </form>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center">Market</th>
+        <th class="text-center">FirstName</th>
+        <th class="text-center">LastName</th>
+        <th class="text-center">Phone</th>
+        <th class="text-center">Adress</th>
+        <th>  <button type="button" class="btn btn-success" style="width: 100%" data-toggle="modal" data-target="#exampleModal">
+            Add New
+          </button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sellers.forEach(function(seller){ %>
+      <tr>
+        <td class="text-center">
+         <%= seller.Market.Name%>
+        </td>
+        <td class="text-center">
+          <%= seller.FirstName %>
+        </td>
+        <td class="text-center">
+          <%= seller.LastName %>
+        </td>
+        <td class="text-center">
+         <%= seller.Phone %>
+        </td>
+        <td class="text-center">
+         <%= seller.Adress %>
+        </td>
+        <td class="text-center">
+            <a href="/seller/delete/<%=seller._id %>" class="material-icons">delete_forever</a>
+            <a href="/seller/edit/<%=seller._id %>" class="material-icons">edit</a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <%- include('../sellers/create'); %>
+  <%- include('../layout/footer.ejs'); %>

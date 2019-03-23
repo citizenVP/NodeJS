@@ -1,0 +1,51 @@
+<%- include('../layout/header.ejs'); %>
+  <h1 class="text-center"><a href="/market">Markets</a></h1>
+  <table class="table">
+    <thead>
+        <tr class="text-center">
+            <form action="/search" method="post">
+                <div class="inline-group">
+                        <input type="hidden" name="tag" value="markets">
+                    <th><input class="form-control" name="search" value="" placeholder="Search" required></th>
+
+                </div>
+            </form>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Phone</th>
+        <th class="text-center">Adress</th>
+        <th><button type="button" class="btn btn-success" style="width: 100%" data-toggle="modal" data-target="#exampleModal">
+          Add New
+        </button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% markets.forEach(function(market){ %>
+      <tr>
+        <td class="text-center">
+          <%= market.Name %>
+        </td>
+        <td class="text-center">
+         <%= market.Phone %>
+        </td>
+        <td class="text-center">
+         <%= market.Adress %>
+        </td>
+        <td class="text-center">
+            <a href="/market/delete/<%=market._id %>" class="material-icons">delete_forever</a>
+            <a href="/market/edit/<%=market._id %>" class="material-icons">edit</a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <%- include('../markets/create'); %>
+  <%- include('../layout/footer.ejs'); %>

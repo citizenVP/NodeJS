@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab6</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit</h5>
+
+            </div>
+            <div class="modal-body">
+                <form action="/order/edit" method="post">
+                    <input class="form-control mb-2 mr-sm-2" placeholder="FirstName" name="id"
+                    value="<%= order._id %>" type="hidden" readonly hidden>
+                    <div class="form-group">
+                        <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="market">
+                            <optgroup label="<%= order.Market.Name %>">
+                                <% markets.forEach(function(market){ %>
+                                <option class="form-control mb-2 mr-sm-2" name="market" value="<%= market.Name %>">
+                                    <%= market.Name %>
+                                </option>
+                                <% }) %>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="seller">
+                            <optgroup label="<%= order.Seller.LastName %>"></optgroup>
+                            <% sellers.forEach(function(seller){ %>
+                            <option class="form-control mb-2 mr-sm-2" name="seller" value="<%= seller.LastName %>">
+                                <%= seller.LastName %>
+                            </option>
+                            <% }) %>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="client">
+                            <optgroup label="<%= order.Client.LastName %>">
+                                <% clients.forEach(function(client){ %>
+                                <option class="form-control mb-2 mr-sm-2" name="client" value="<%= client.LastName %>">
+                                    <%= client.LastName %>
+                                </option>
+                                <% }) %>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="merchandise">
+                            <optgroup label="<%= order.Merchandise.Title %>">
+                                <% merchandises.forEach(function(merchandise){ %>
+                                <option class="form-control mb-2 mr-sm-2" name="merchandise" value="<%= merchandise.Title %>">
+                                    <%= merchandise.Title %>
+                                </option>
+                                <% }) %>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="1" max="10" class="form-control mb-2 mr-sm-2" placeholder="Count"
+                        value="<%= order.Count %>" name="count" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="1" max="1000000" class="form-control mb-2 mr-sm-2" placeholder="Price"
+                        value="<%= order.Price %>" name="price" autocomplete="off" required>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-secondary" href="/">Close</a>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

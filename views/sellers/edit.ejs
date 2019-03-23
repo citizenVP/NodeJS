@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab6</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form action="/seller/edit" method="post">
+                        <div class="form-group">
+                                <select class="form-control mb-2 mr-sm-2" data-style="btn-info" name="MarketName" >
+                                  <optgroup label="<%= seller.Market.Name %>">
+                                    <% markets.forEach(function(market){ %>
+                                    <option class="form-control mb-2 mr-sm-2" value="<%= market.Name %>">
+                                      <%= market.Name %>
+                                    </option>
+                                    <% }) %>
+                                  </optgroup>
+                                </select>
+                            </div>
+                            <input class="form-control mb-2 mr-sm-2" placeholder="FirstName" name="id"
+                            value="<%= seller._id %>" type="hidden" readonly hidden>
+                            <div class="form-group">
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="FirstName" 
+                                        name="FirstName" value="<%= seller.FirstName %>" autocomplete="off"
+                                required>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="LastName"
+                                     name="LastName" value="<%= seller.LastName %>" autocomplete="off"
+                                required>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Phone" 
+                              name="Phone" value="<%= seller.Phone %>" autocomplete="off"
+                                required>
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Adress" 
+                              name="Adress" value="<%= seller.Adress %>" autocomplete="off"
+                                required>
+                            </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-secondary" href="/">Close</a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

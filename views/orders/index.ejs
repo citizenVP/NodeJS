@@ -1,0 +1,61 @@
+<%- include('../layout/header.ejs'); %>
+  <h1 class="text-center"><a href="/order">Orders</a></h1>
+  <table class="table">
+      <thead>
+          <tr class="text-center">
+              <form action="/search" method="post">
+                  <div class="inline-group">
+                          <input type="hidden" name="tag" value="orders">
+                      <th><input class="form-control" name="search" value="" placeholder="Search" required></th>
+                  </div>
+              </form>
+          </tr>
+      </thead>
+  </table>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center">Market</th>
+        <th class="text-center">Seller</th>
+        <th class="text-center">Client</th>
+        <th class="text-center">Merchandise</th>
+        <th class="text-center">Count</th>
+        <th class="text-center">Price</th>
+        <th><button type="button" class="btn btn-success" 
+          style="width: 100%" data-toggle="modal" data-target="#exampleModal">
+            Add New
+          </button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(order){ %>
+      <tr>
+        <td class="text-center">
+          <%= order.Market.Name %>
+        </td>
+        <td class="text-center">
+           <%= order.Seller.LastName %>
+        </td>
+        <td class="text-center">
+            <%= order.Client.LastName %>
+        </td>
+        <td class="text-center">
+          <%= order.Merchandise.Title %>
+        </td>
+        <td class="text-center">
+          <%= order.Count %>
+        </td>
+        <td class="text-center">
+            <%= order.Price %>
+          </td>
+        <td class="text-center">
+            <a href="/order/delete/<%=order._id %>" class="material-icons">delete_forever</a>
+            <a href="/order/edit/<%=order._id %>" class="material-icons">edit</a>
+        </td>
+      </tr>
+      <% }) %>
+
+    </tbody>
+  </table>
+  <%- include('../orders/create'); %>
+  <%- include('../layout/footer.ejs'); %>
